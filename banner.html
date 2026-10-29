@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Mentari Mod Banner</title>
+    <style>
+      :root {
+        --bg: #05060f;
+        --ink: #eef2ff;
+        --dim: rgba(226, 232, 255, 0.55);
+        --c1: #22d3ee;
+        --c2: #8b5cf6;
+        --c3: #f472b6;
+        --line: rgba(139, 92, 246, 0.35);
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body {
+        width: 100%; height: 100%; overflow: hidden;
+        background: var(--bg); color: var(--ink);
+        font-family: ui-monospace, "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+        user-select: none; cursor: crosshair;
+      }
+      canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+      .spot {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(260px circle at var(--mx, -500px) var(--my, -500px),
+          rgba(34, 211, 238, 0.16), rgba(139, 92, 246, 0.08) 45%, transparent 70%);
+        transition: background 0.05s;
+      }
+      .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background:
+          radial-gradient(ellipse at 15% 60%, rgba(139, 92, 246, 0.22), transparent 55%),
+          radial-gradient(ellipse at 90% 10%, rgba(34, 211, 238, 0.14), transparent 50%),
+          linear-gradient(to right, rgba(5, 6, 15, 0.75) 0%, rgba(5, 6, 15, 0.1) 65%);
+      }
+      .scan {
+        position: absolute; inset: 0; pointer-events: none;
+        background: repeating-linear-gradient(to bottom,
+          rgba(255,255,255,0.025) 0 1px, transparent 1px 3px);
+      }
+      .frame {
+        position: absolute; inset: 10px; pointer-events: none;
+        border: 1px solid rgba(139, 92, 246, 0.18); border-radius: 12px;
+      }
+      .frame::before, .frame::after {
+        content: ""; position: absolute; width: 18px; height: 18px;
+        border-color: var(--c1); border-style: solid;
+      }
+      .frame::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; border-radius: 12px 0 0 0; }
+      .frame::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; border-radius: 0 0 12px 0; }
+
+      .wrap {
+        position: relative; z-index: 2; height: 100%;
+        display: flex; flex-direction: column; justify-content: space-between;
+        padding: 26px 32px;
+      }
+      .top, .bottom {
+        display: flex; justify-content: space-between; align-items: center; gap: 12px;
+        font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim);
+      }
+      .tag {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px;
+        background: rgba(139, 92, 246, 0.10);
+        backdrop-filter: blur(6px);
+      }
+      .dot {
+        width: 7px; height: 7px; border-radius: 50%;
+        background: var(--c1); box-shadow: 0 0 10px var(--c1);
+        animation: pulse 1.6s ease-in-out infinite;
+      }
+      @keyframes pulse { 50% { opacity: 0.3; } }
+      .chips { display: flex; gap: 8px; }
+      .chip {
+        padding: 5px 10px; border-radius: 6px;
+        border: 1px solid rgba(34, 211, 238, 0.3); color: var(--c1);
+        background: rgba(34, 211, 238, 0.06);
+      }
+      .chip.v { border-color: rgba(244, 114, 182, 0.35); color: var(--c3); background: rgba(244,114,182,0.06); }
+
+      .hero {
+        display: flex; flex-direction: column; gap: 6px;
+        transform: translate3d(var(--px, 0), var(--py, 0), 0);
+        transition: transform 0.25s ease-out;
+      }
+      .eyebrow { font-size: 12px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--c1); }
+      .eyebrow .cursor {
+        display: inline-block; width: 8px; height: 13px; margin-left: 4px; vertical-align: -2px;
+        background: var(--c1); animation: blink 1s steps(1) infinite;
+      }
+      @keyframes blink { 50% { opacity: 0; } }
+
+      .name {
+        position: relative;
+        font-family: "Segoe UI", system-ui, sans-serif; font-weight: 900;
+        font-size: clamp(44px, 9vw, 104px); line-height: 0.95; letter-spacing: -0.03em;
+        background: linear-gradient(100deg, #ffffff 0%, var(--c1) 35%, var(--c2) 70%, var(--c3) 100%);
+        background-size: 200% 100%;
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+        width: max-content; max-width: 100%;
+        animation: shine 6s linear infinite;
+        filter: drop-shadow(0 0 18px rgba(139, 92, 246, 0.35));
+      }
+      @keyframes shine { to { background-position: 200% 0; } }
+      .name::before, .name::after {
+        content: attr(data-text); position: absolute; inset: 0;
+        background: inherit; background-size: inherit;
+        -webkit-background-clip: text; background-clip: text; color: transparent; opacity: 0;
+      }
+      .name.glitch::before {
+        opacity: 0.85; transform: translate(-4px, 0);
+        clip-path: inset(10% 0 55% 0); filter: drop-shadow(2px 0 var(--c1));
+      }
+      .name.glitch::after {
+        opacity: 0.85; transform: translate(4px, 0);
+        clip-path: inset(60% 0 8% 0); filter: drop-shadow(-2px 0 var(--c3));
+      }
+      .sub { font-size: 13px; color: var(--dim); letter-spacing: 0.06em; }
+      .sub b { color: var(--ink); font-weight: 600; }
+      .clock { font-variant-numeric: tabular-nums; color: var(--ink); }
+
+      @media (max-width: 560px) {
+        .wrap { padding: 18px; }
+        .hide-sm { display: none; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .dot, .eyebrow .cursor, .name { animation: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="fx"></canvas>
+    <div class="vignette"></div>
+    <div class="spot" id="spot"></div>
+    <div class="scan"></div>
+    <div class="frame"></div>
+
+    <div class="wrap">
+      <div class="top">
+        <span class="tag"><span class="dot"></span>Mentari Mod · Online</span>
+        <span class="clock" id="clock">--:--:--</span>
+      </div>
+
+      <div class="hero">
+        <div class="eyebrow">modded by<span class="cursor"></span></div>
+        <div class="name" id="name" data-text="zVertiXx">zVertiXx</div>
+        <div class="sub" id="greet">Selamat datang kembali.</div>
+      </div>
+
+      <div class="bottom">
+        <span>Universitas Pamulang · Mentari</span>
+        <span class="chips hide-sm"><span class="chip">AI · Claude</span><span class="chip v">v2.0 mod</span></span>
+      </div>
+    </div>
+
+    <script src="banner.js"></script>
+  </body>
+</html>

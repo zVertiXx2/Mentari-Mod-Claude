@@ -1,0 +1,13 @@
+# --- IDE & SYSTEM ---
+.gemini/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+*.zip
+
+# --- secrets ---
+.env
+*.key
+config.local.js

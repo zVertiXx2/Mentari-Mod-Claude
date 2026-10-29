@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="440" viewBox="0 0 1280 440">
+<rect width="1280" height="440" rx="20" fill="#F6F6FC"/>
+<text x="56" y="62" font-family="Consolas, Menlo, monospace" font-size="15" fill="#F0882E" letter-spacing="2">ALUR OTOMATIS PER PERTEMUAN</text>
+<text x="56" y="96" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="26" font-weight="700" fill="#1B1C4A">Auto-flow: pretest → forum, posttest → kuesioner</text>
+<text x="56" y="160" font-family="Consolas, Menlo, monospace" font-size="13" fill="#6B6E9C">PRE-TEST</text>
+<rect x="56" y="174" width="210" height="84" rx="14" fill="#2E3088"/><text x="161.0" y="212" text-anchor="middle" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF">Pretest selesai</text><text x="161.0" y="236" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="13" fill="#D9DAF5">nilai ditampilkan</text>
+<line x1="266" y1="216" x2="328" y2="216" stroke="#5459A4" stroke-width="2.5"/><path d="M326,209 L336,216 L326,223 Z" fill="#5459A4"/><text x="301.0" y="206" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="12" fill="#6B6E9C">redirect</text>
+<rect x="336" y="174" width="210" height="84" rx="14" fill="#FFFFFF" stroke="#C9CAEB" stroke-width="2"/><text x="441.0" y="212" text-anchor="middle" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="19" font-weight="700" fill="#1B1C4A">Forum diskusi</text><text x="441.0" y="236" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="13" fill="#6B6E9C">pertemuan yang sama</text>
+<line x1="546" y1="216" x2="608" y2="216" stroke="#5459A4" stroke-width="2.5"/><path d="M606,209 L616,216 L606,223 Z" fill="#5459A4"/><text x="581.0" y="206" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="12" fill="#6B6E9C">Sonnet</text>
+<rect x="616" y="174" width="250" height="84" rx="14" fill="#F0882E"/><text x="741.0" y="212" text-anchor="middle" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="19" font-weight="700" fill="#1B1C4A">Generate jawaban</text><text x="741.0" y="236" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="13" fill="#3A2410">+ 6 ide pertanyaan</text>
+<text x="56" y="310" font-family="Consolas, Menlo, monospace" font-size="13" fill="#6B6E9C">POST-TEST</text>
+<rect x="56" y="324" width="210" height="84" rx="14" fill="#2E3088"/><text x="161.0" y="362" text-anchor="middle" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF">Posttest selesai</text><text x="161.0" y="386" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="13" fill="#D9DAF5">nilai ditampilkan</text>
+<line x1="266" y1="366" x2="328" y2="366" stroke="#5459A4" stroke-width="2.5"/><path d="M326,359 L336,366 L326,373 Z" fill="#5459A4"/><text x="301.0" y="356" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="12" fill="#6B6E9C">submit</text>
+<rect x="336" y="324" width="210" height="84" rx="14" fill="#FFFFFF" stroke="#C9CAEB" stroke-width="2"/><text x="441.0" y="362" text-anchor="middle" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="19" font-weight="700" fill="#1B1C4A">Kuesioner</text><text x="441.0" y="386" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="13" fill="#6B6E9C">dikirim otomatis</text>
+<line x1="546" y1="366" x2="608" y2="366" stroke="#5459A4" stroke-width="2.5"/><path d="M606,359 L616,366 L606,373 Z" fill="#5459A4"/><text x="581.0" y="356" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="12" fill="#6B6E9C">open</text>
+<rect x="616" y="324" width="250" height="84" rx="14" fill="#FFFFFF" stroke="#C9CAEB" stroke-width="2"/><text x="741.0" y="362" text-anchor="middle" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="19" font-weight="700" fill="#1B1C4A">Halaman kuesioner</text><text x="741.0" y="386" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="13" fill="#6B6E9C">/kuesioner/PERTEMUAN_n</text>
+<rect x="1010" y="174" width="214" height="234" rx="14" fill="#ECECF8"/>
+<text x="1030" y="206" font-family="Consolas, Menlo, monospace" font-size="13" fill="#6B6E9C">MATIKAN LEWAT</text>
+<text x="1030" y="230" font-family="Consolas, Menlo, monospace" font-size="13" fill="#6B6E9C">localStorage:</text>
+<text x="1030" y="268" font-family="Consolas, Menlo, monospace" font-size="12.5" fill="#1B1C4A">mentari_flow_</text>
+<text x="1030" y="286" font-family="Consolas, Menlo, monospace" font-size="12.5" fill="#1B1C4A">pretest_forum = "0"</text>
+<text x="1030" y="324" font-family="Consolas, Menlo, monospace" font-size="12.5" fill="#1B1C4A">mentari_flow_</text>
+<text x="1030" y="342" font-family="Consolas, Menlo, monospace" font-size="12.5" fill="#1B1C4A">posttest_kuesioner</text>
+<text x="1030" y="360" font-family="Consolas, Menlo, monospace" font-size="12.5" fill="#1B1C4A">= "0"</text>
+</svg>
